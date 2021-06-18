@@ -12,12 +12,90 @@
 <body>
 
   <!-- Start - Main container -->
-  <div class="container mx-auto sm:max-w-3xl">
+  <div class="container mx-auto px-4 lg:px-0 sm:max-w-3xl">
     <!-- Start - Logo -->
     <h1 class="my-8 text-3xl">
       GitHub cover generator
     </h1>
     <!-- End - Logo -->
+
+    <!-- Start - Inputs -->
+    <div>
+      <div class="flex flex-col pb-4">
+        <!-- Line 1 -->
+        <label for="line1" class="pl-3 pb-1">Line 1</label>
+        <input type="text" name="line1" id="line1" class="h-8 border border-gray-300 rounded px-3 py-1" value="Hi 👋,">
+      </div>
+      <div class="flex flex-col pb-4">
+        <!-- Line 2 -->
+        <label for="line2" class="pl-3 pb-1">Line 2</label>
+        <input type="text" name="line2" id="line2" class="h-8 border border-gray-300 rounded px-3 py-1" value="I'm Lucas ALBERT">
+      </div>
+      <div class="flex flex-col pb-4">
+        <!-- Line 3 -->
+        <label for="line3" class="pl-3 pb-1">Line 3</label>
+        <input type="text" name="line3" id="line3" class="h-8 border border-gray-300 rounded px-3 py-1" value="CAD Designer / Web Developer / Maker / Love to play video game">
+      </div>
+      <div class="flex pb-4 space-x-6">
+        <div class="w-full flex flex-col">
+          <!-- Backgroud color -->
+          <label for="backgroundColor" class="pl-3 pb-1">Background Color</label>
+          <input type="color" name="backgroundColor" id="backgroundColor" class="h-8 w-full p-0 border-none bg-transparent">
+        </div>
+        <div class="w-full flex flex-col">
+          <!-- Font color -->
+          <label for="fontColor" class="pl-3 pb-1">Font color</label>
+          <input type="color" name="fontColor" id="fontColor" class="h-8 w-full p-0 border-none bg-transparent">
+        </div>
+      </div>
+      <div class="flex pb-4 space-x-6">
+        <div class="w-full flex flex-col">
+          <!-- Font size -->
+          <label for="fontSize" class="pl-3 pb-1">Font size</label>
+          <select name="fontSize" id="fontSize" class="h-8 w-full border border-gray-300 rounded px-3 py-1 bg-transparent">
+            <option value="xs">XS</option>
+            <option value="s" selected>S</option>
+            <option value="m">M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
+          </select>
+        </div>
+        <div class="w-full flex flex-col">
+          <!-- Font family -->
+          <label for="fontFamily" class="pl-3 pb-1">Font family</label>
+          <select name="fontFamily" id="fontFamily" class="h-8 border w-full border-gray-300 rounded px-3 py-1 bg-white">
+            <option value="roboto" selected>Roboto</option>
+            <option value="ubuntu">Ubuntu</option>
+            <option value="poppins">Poppins</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    <!-- End - Inputs -->
+
+    <!-- Start - Preview -->
+    <div class="flex flex-col ">
+      <canvas height="500" width="1280" id="imagePreview" class="max-w-full py-4"></canvas>
+      <button class="mx-auto px-10 py-2 bg-purple-700 text-white font-medium rounded-lg">Generate image</button>
+    </div>
+    <!-- End - Preview -->
+
+    <!-- Start - Output -->
+    <div id="output"></div>
+    <!-- End - Output -->
+
+    <!-- Start - Footer -->
+    <footer class="pt-20 pb-10 text-center">
+      <p class="pb-1">
+        <a href="https://github.com/theoneweekproject/gh-cover-generator" target="_blank" rel="noreferrer noopener" class="text-purple-700 underline">GitHub cover generator</a> - <a href="https://github.com/theoneweekproject/" target="_blank" rel="noreferrer noopener" class="text-purple-700 underline">TheOneWeekProject</a>
+      </p>
+      <p class="pb-1">
+        Made with ❤️ by <a href="https://lucasalt.fr/" target="_blank" rel="noreferrer noopener" class="text-purple-700 underline">LucasAlt</a>
+      </p>
+    </footer>
+    <!-- End - Footer -->
+
   </div>
   <!-- End - Main container -->
 
