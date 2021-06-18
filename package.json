@@ -1,0 +1,24 @@
+{
+  "name": "gh-cover-image",
+  "version": "0.0.1",
+  "description": "GitHub profile header generator",
+  "repository": "git@github.com:theoneweekproject/gh-cover-generator",
+  "author": "LucasCtrl <lucasalt@protonmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "prettier": "^2.3.1",
+    "tailwindcss": "^2.2.0"
+  },
+  "scripts": {
+    "dev": "npm run watch:css",
+    "lint": "eslint --ext .js --ignore-path .gitignore .",
+    "watch:css": "postcss css/tailwind.css -o css/main.css --watch"
+  }
+}
