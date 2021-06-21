@@ -1,4 +1,4 @@
-console.log('GitHub cover generator v0.0.3')
+console.log('GitHub cover generator v0.0.4')
 console.log('Contribute at: https://github.com/theoneweekproject/gh-cover-generator')
 
 // ==================== Global variables ====================
@@ -18,10 +18,10 @@ const line3Input = document.getElementById('line3')
 const previewArea = document.getElementById('preview')
 
 // ---------- Layers ----------
-const backgroundLayer = new CanvasEditor(previewArea, 'backgroundLayer', 1000)
-const line1Layer = new CanvasEditor(previewArea, 'line1Layer', 1001)
-const line2Layer = new CanvasEditor(previewArea, 'line2Layer', 1002)
-const line3Layer = new CanvasEditor(previewArea, 'line3Layer', 1003)
+const backgroundLayer = new CanvasEditor(previewArea, 'backgroundLayer', 1280, 500, 1000)
+const line1Layer = new CanvasEditor(previewArea, 'line1Layer', 1280, 500, 1001)
+const line2Layer = new CanvasEditor(previewArea, 'line2Layer', 1280, 500, 1002)
+const line3Layer = new CanvasEditor(previewArea, 'line3Layer', 1280, 500, 1003)
 
 // ==================== Page initialization ====================
 function updateInputs() {
@@ -31,6 +31,9 @@ function updateInputs() {
 }
 function init() {
   updateInputs()
+  line1Layer.writeText(canvasContent.line1, 50, 50)
+  line2Layer.writeText(canvasContent.line2, 50, 150)
+  line3Layer.writeText(canvasContent.line3, 50, 250)
 }
 
 window.onload = init()
