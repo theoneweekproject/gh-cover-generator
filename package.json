@@ -1,6 +1,6 @@
 {
   "name": "gh-cover-image",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "GitHub profile header generator",
   "repository": "git@github.com:theoneweekproject/gh-cover-generator",
   "author": "LucasCtrl <lucasalt@protonmail.com>",
