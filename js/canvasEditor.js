@@ -16,6 +16,8 @@ class CanvasEditor {
     this.zIndex = zIndex
     this.canvasCtx
 
+    this.text = {}
+
     // Generate the canvas
     this.createCanvas(this.previewArea, this.canvasName, this.canvasWidth, this.canvasHeight, this.zIndex)
   }
@@ -45,31 +47,54 @@ class CanvasEditor {
   }
 
   /**
-   * Write text on the canvas
-   * @param {String} text - Text to write
-   * @param {Number} xPos - Position in X
-   * @param {Number} yPos - Position in Y
+   * Update text on the canvas
+   * @param {Object} textParameters - Text parameters
+   * @param {Number} textParameters.posX - Position in X
+   * @param {Number} textParameters.posY - Position in Y
+   * @param {String} textParameters.text - Text to write
+   * @param {String} [textParameters.color] - Text color
+   * @param {String} [textParameters.font] - Text font
+   * @param {Number} [textParameters.size] - Text size
    */
-  writeText(text, xPos, yPos) {
-    let fontSize = 48
-    let posX = xPos
-    let posY = yPos
+  writeText(textParameters) {
+    this.text = {
+      posX: textParameters.posX,
+      posY: textParameters.posY,
+      value: textParameters.text,
+      color: textParameters.color ? textParameters.color : '#000000',
+      font: textParameters.font ? textParameters.font : 'sans-serif',
+      size: textParameters.size ? textParameters.size : 48,
+    }
 
-    this.canvasCtx.font = `${fontSize}px sans-serif`
-    this.canvasCtx.lineHeight = `${fontSize}px`
-    this.canvasCtx.textBaseline = 'hanging'
-
-    this.canvasCtx.fillText(text, posX, posY)
+    this.updateText({})
   }
 
   /**
    * Update text on the canvas
-   * @param {String} text - Text to write
-   * @param {Number} xPos - Position in X
-   * @param {Number} yPos - Position in Y
+   * @param {Object} updatedText - Text parameters
+   * @param {Number} [updatedText.posX] - Position in X
+   * @param {Number} [updatedText.posY] - Position in Y
+   * @param {String} [updatedText.text] - Text to write
+   * @param {String} [updatedText.color] - Text color
+   * @param {String} [updatedText.font] - Text font
+   * @param {Number} [updatedText.size] - Text size
    */
-  updateText(text, xPos, yPos) {
+  updateText(updatedText) {
+    this.text = {
+      posX: updatedText.posX ? updatedText.posX : this.text.posX,
+      posY: updatedText.posY ? updatedText.posY : this.text.posY,
+      value: updatedText.text ? updatedText.text : this.text.value,
+      color: updatedText.color ? updatedText.color : this.text.color,
+      font: updatedText.font ? updatedText.font : this.text.font,
+      size: updatedText.size ? updatedText.size : this.text.size,
+    }
+
     this.clearCanvas()
-    this.writeText(text, xPos, yPos)
+
+    this.canvasCtx.font = `${this.text.size}px sans-serif`
+    this.canvasCtx.lineHeight = `${this.text.size}px`
+    this.canvasCtx.textBaseline = 'hanging'
+
+    this.canvasCtx.fillText(this.text.value, this.text.posX, this.text.posY)
   }
 }

@@ -26,17 +26,17 @@ const line3Layer = new CanvasEditor(previewArea, 'line3Layer', 1280, 500, 1003)
 // ==================== Input handlers ====================
 // ---------- Line 1 input ----------
 line1Input.addEventListener('input', (e) => {
-  line1Layer.updateText(e.target.value, 50, 50)
+  line1Layer.updateText({ posX: 50, posY: 50, text: e.target.value })
 })
 
 // ---------- Line 2 input ----------
 line2Input.addEventListener('input', (e) => {
-  line2Layer.updateText(e.target.value, 50, 150)
+  line2Layer.updateText({ posX: 50, posY: 150, text: e.target.value })
 })
 
 // ---------- Line 3 input ----------
 line3Input.addEventListener('input', (e) => {
-  line3Layer.updateText(e.target.value, 50, 250)
+  line3Layer.updateText({ posX: 50, posY: 250, text: e.target.value })
 })
 
 // ==================== Page initialization ====================
@@ -48,9 +48,9 @@ function updateInputs() {
 
 function init() {
   updateInputs()
-  line1Layer.writeText(canvasContent.line1, 50, 50)
-  line2Layer.writeText(canvasContent.line2, 50, 150)
-  line3Layer.writeText(canvasContent.line3, 50, 250)
+  line1Layer.writeText({ posX: 50, posY: 50, text: canvasContent.line1 })
+  line2Layer.writeText({ posX: 50, posY: 150, text: canvasContent.line2 })
+  line3Layer.writeText({ posX: 50, posY: 250, text: canvasContent.line3 })
 }
 
 window.onload = init()
