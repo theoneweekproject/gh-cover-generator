@@ -13,6 +13,7 @@ let canvasContent = {
 const line1Input = document.getElementById('line1')
 const line2Input = document.getElementById('line2')
 const line3Input = document.getElementById('line3')
+const fontColorInput = document.getElementById('fontColor')
 
 // ---------- Preview ----------
 const previewArea = document.getElementById('preview')
@@ -37,6 +38,13 @@ line2Input.addEventListener('input', (e) => {
 // ---------- Line 3 input ----------
 line3Input.addEventListener('input', (e) => {
   line3Layer.updateText({ posX: 50, posY: 250, text: e.target.value })
+})
+
+// ---------- Line 3 input ----------
+fontColorInput.addEventListener('change', (e) => {
+  line1Layer.updateText({ color: e.target.value })
+  line2Layer.updateText({ color: e.target.value })
+  line3Layer.updateText({ color: e.target.value })
 })
 
 // ==================== Page initialization ====================

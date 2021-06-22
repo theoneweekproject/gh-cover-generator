@@ -91,6 +91,7 @@ class CanvasEditor {
 
     this.clearCanvas()
 
+    this.canvasCtx.fillStyle = this.text.color
     this.canvasCtx.font = `${this.text.size}px sans-serif`
     this.canvasCtx.lineHeight = `${this.text.size}px`
     this.canvasCtx.textBaseline = 'hanging'
