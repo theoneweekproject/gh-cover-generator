@@ -51,8 +51,6 @@ class CanvasEditor {
    * @param {Number} yPos - Position in Y
    */
   writeText(text, xPos, yPos) {
-    this.clearCanvas()
-
     let fontSize = 48
     let posX = xPos
     let posY = yPos
@@ -62,5 +60,16 @@ class CanvasEditor {
     this.canvasCtx.textBaseline = 'hanging'
 
     this.canvasCtx.fillText(text, posX, posY)
+  }
+
+  /**
+   * Update text on the canvas
+   * @param {String} text - Text to write
+   * @param {Number} xPos - Position in X
+   * @param {Number} yPos - Position in Y
+   */
+  updateText(text, xPos, yPos) {
+    this.clearCanvas()
+    this.writeText(text, xPos, yPos)
   }
 }
