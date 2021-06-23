@@ -62,7 +62,7 @@ class CanvasEditor {
       posY: textParameters.posY,
       value: textParameters.text,
       color: textParameters.color ? textParameters.color : '#000000',
-      font: textParameters.font ? textParameters.font : 'sans-serif',
+      font: textParameters.font ? textParameters.font : 'Roboto',
       size: textParameters.size ? textParameters.size : 48,
     }
 
@@ -92,7 +92,7 @@ class CanvasEditor {
     this.clearCanvas()
 
     this.canvasCtx.fillStyle = this.text.color
-    this.canvasCtx.font = `${this.text.size}px sans-serif`
+    this.canvasCtx.font = `${this.text.size}px ${this.text.font}`
     this.canvasCtx.lineHeight = `${this.text.size}px`
     this.canvasCtx.textBaseline = 'hanging'
 

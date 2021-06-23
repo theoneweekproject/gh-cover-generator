@@ -14,6 +14,7 @@ const line1Input = document.getElementById('line1')
 const line2Input = document.getElementById('line2')
 const line3Input = document.getElementById('line3')
 const fontColorInput = document.getElementById('fontColor')
+const fontFamilyInput = document.getElementById('fontFamily')
 
 // ---------- Preview ----------
 const previewArea = document.getElementById('preview')
@@ -40,11 +41,19 @@ line3Input.addEventListener('input', (e) => {
   line3Layer.updateText({ posX: 50, posY: 250, text: e.target.value })
 })
 
-// ---------- Line 3 input ----------
+// ---------- Font color input ----------
 fontColorInput.addEventListener('change', (e) => {
   line1Layer.updateText({ color: e.target.value })
   line2Layer.updateText({ color: e.target.value })
   line3Layer.updateText({ color: e.target.value })
+})
+
+// ---------- Font family input ----------
+fontFamilyInput.addEventListener('change', () => {
+  const fonts = ['Roboto', 'Ubuntu', 'Poppins']
+  line1Layer.updateText({ font: fonts[fontFamilyInput.selectedIndex] })
+  line2Layer.updateText({ font: fonts[fontFamilyInput.selectedIndex] })
+  line3Layer.updateText({ font: fonts[fontFamilyInput.selectedIndex] })
 })
 
 // ==================== Page initialization ====================
