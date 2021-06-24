@@ -49,11 +49,21 @@ fontColorInput.addEventListener('change', (e) => {
 })
 
 // ---------- Font family input ----------
-fontFamilyInput.addEventListener('change', () => {
+fontFamilyInput.addEventListener('change', async () => {
   const fonts = ['Roboto', 'Ubuntu', 'Poppins']
-  line1Layer.updateText({ font: fonts[fontFamilyInput.selectedIndex] })
-  line2Layer.updateText({ font: fonts[fontFamilyInput.selectedIndex] })
-  line3Layer.updateText({ font: fonts[fontFamilyInput.selectedIndex] })
+  let fontName = fonts[fontFamilyInput.selectedIndex]
+
+  if (!document.getElementById(fontName)) {
+    var link = document.createElement('link')
+    link.id = fontName
+    link.href = `https://fonts.googleapis.com/css2?family=${fontName}&display=swap`
+    link.rel = 'stylesheet'
+    await document.head.appendChild(link)
+  }
+
+  await line1Layer.updateText({ font: fontName })
+  await line2Layer.updateText({ font: fontName })
+  await line3Layer.updateText({ font: fontName })
 })
 
 // ==================== Page initialization ====================
