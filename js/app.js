@@ -53,17 +53,29 @@ fontFamilyInput.addEventListener('change', async () => {
   const fonts = ['Roboto', 'Ubuntu', 'Poppins']
   let fontName = fonts[fontFamilyInput.selectedIndex]
 
-  if (!document.getElementById(fontName)) {
-    var link = document.createElement('link')
-    link.id = fontName
-    link.href = `https://fonts.googleapis.com/css2?family=${fontName}&display=swap`
-    link.rel = 'stylesheet'
-    await document.head.appendChild(link)
+  // Check if font is loaded
+  let interval = null
+
+  function checkFont() {
+    let fontIsLoaded = document.fonts.check(`1em ${fontName}`)
+    console.log(`Check if ${fontName} is loaded: ${fontIsLoaded}`)
+
+    if (fontIsLoaded) {
+      clearInterval(interval)
+      line1Layer.updateText({ font: fontName })
+      line2Layer.updateText({ font: fontName })
+      line3Layer.updateText({ font: fontName })
+    }
   }
 
-  await line1Layer.updateText({ font: fontName })
-  await line2Layer.updateText({ font: fontName })
-  await line3Layer.updateText({ font: fontName })
+  interval = setInterval(() => {
+    console.log('Checking...')
+    checkFont()
+  }, 50)
+
+  line1Layer.updateText({ font: fontName })
+  line2Layer.updateText({ font: fontName })
+  line3Layer.updateText({ font: fontName })
 })
 
 // ==================== Page initialization ====================

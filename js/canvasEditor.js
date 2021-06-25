@@ -62,7 +62,7 @@ class CanvasEditor {
       posY: textParameters.posY,
       value: textParameters.text,
       color: textParameters.color ? textParameters.color : '#000000',
-      font: textParameters.font ? textParameters.font : 'Roboto',
+      font: textParameters.font ? textParameters.font : 'sans-serif',
       size: textParameters.size ? textParameters.size : 48,
     }
 
