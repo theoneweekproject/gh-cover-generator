@@ -50,7 +50,7 @@ fontColorInput.addEventListener('change', (e) => {
 
 // ---------- Font family input ----------
 fontFamilyInput.addEventListener('change', async () => {
-  const fonts = ['Roboto', 'Ubuntu', 'Poppins']
+  const fonts = ['sans-serif', 'serif', 'Roboto', 'Ubuntu', 'Poppins']
   let fontName = fonts[fontFamilyInput.selectedIndex]
 
   // Check if font is loaded
@@ -58,7 +58,7 @@ fontFamilyInput.addEventListener('change', async () => {
 
   function checkFont() {
     let fontIsLoaded = document.fonts.check(`1em ${fontName}`)
-    console.log(`Check if ${fontName} is loaded: ${fontIsLoaded}`)
+    console.log(`${fontName} is loaded: ${fontIsLoaded}`)
 
     if (fontIsLoaded) {
       clearInterval(interval)
@@ -69,7 +69,7 @@ fontFamilyInput.addEventListener('change', async () => {
   }
 
   interval = setInterval(() => {
-    console.log('Checking...')
+    console.log(`Checking for font ${fontName}...`)
     checkFont()
   }, 50)
 
