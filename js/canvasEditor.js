@@ -1,15 +1,15 @@
 /**
  * Canvas Editor
  * Helper for canvas edition
- * @param {Object} previewArea - HTML element where the canvas need to be rendered
+ * @param {Object} renderZoneId - HTML element where the canvas need to be rendered
  * @param {String} canvasName - Name of the layer
  * @param {Number} width - Canvas width
  * @param {Number} height - Canvas height
  * @param {Number} zIndex - z-index of the canvas
  */
 class CanvasEditor {
-  constructor(previewArea, canvasName, canvasWidth, canvasHeight, zIndex) {
-    this.previewArea = previewArea
+  constructor(renderZoneId, canvasName, canvasWidth, canvasHeight, zIndex) {
+    this.renderZoneId = renderZoneId
     this.canvasName = canvasName
     this.canvasWidth = canvasWidth
     this.canvasHeight = canvasHeight
@@ -19,14 +19,14 @@ class CanvasEditor {
     this.text = {}
 
     // Generate the canvas
-    this.createCanvas(this.previewArea, this.canvasName, this.canvasWidth, this.canvasHeight, this.zIndex)
+    this.createCanvas(this.renderZoneId, this.canvasName, this.canvasWidth, this.canvasHeight, this.zIndex)
   }
 
   /**
    * Create canvas
    * @param {string} canvasName - Name of the canvas that will be created
    */
-  createCanvas(previewArea, canvasName, canvasWidth, canvasHeight, zIndex) {
+  createCanvas(renderZoneId, canvasName, canvasWidth, canvasHeight, zIndex) {
     let canvas = document.createElement('canvas')
     canvas.setAttribute('width', canvasWidth)
     canvas.setAttribute('height', canvasHeight)
@@ -34,7 +34,10 @@ class CanvasEditor {
     canvas.setAttribute('class', 'max-w-full py-4 absolute top-0 left-0')
     canvas.setAttribute('style', `z-index: ${zIndex}`)
 
-    previewArea.append(canvas)
+    // Create canvas element in HTML
+    renderZoneId.append(canvas)
+    console.log(`Canvas ${canvasName} created!`)
+
     let canvasElement = document.getElementById(canvasName)
     this.canvasCtx = canvasElement.getContext('2d')
   }
@@ -97,5 +100,16 @@ class CanvasEditor {
     this.canvasCtx.textBaseline = 'hanging'
 
     this.canvasCtx.fillText(this.text.value, this.text.posX, this.text.posY)
+  }
+
+  /**
+   * Update background
+   * @param {String} color - Background color
+   */
+  updateBackgroud(color) {
+    this.backgroundColor = color
+
+    this.canvasCtx.fillStyle = this.backgroundColor
+    this.canvasCtx.fillRect(0, 0, this.canvasWidth, this.canvasHeight)
   }
 }

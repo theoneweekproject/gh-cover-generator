@@ -7,6 +7,9 @@ let canvasContent = {
   line1: 'Hi 👋,',
   line2: "I'm Lucas ALBERT",
   line3: 'CAD Designer / Web Developer / Maker',
+  fontColor: '#4C1D95',
+  fontFamily: 'sans-serif',
+  backgroundColor: '#EDE9FE',
 }
 
 // ---------- Inputs ----------
@@ -15,6 +18,7 @@ const line2Input = document.getElementById('line2')
 const line3Input = document.getElementById('line3')
 const fontColorInput = document.getElementById('fontColor')
 const fontFamilyInput = document.getElementById('fontFamily')
+const backgroundColorInput = document.getElementById('backgroundColor')
 
 // ---------- Preview ----------
 const previewArea = document.getElementById('preview')
@@ -78,18 +82,27 @@ fontFamilyInput.addEventListener('change', async () => {
   line3Layer.updateText({ font: fontName })
 })
 
+// ---------- Background color input ----------
+backgroundColorInput.addEventListener('change', (e) => {
+  backgroundLayer.updateBackgroud(e.target.value)
+  console.log(e.target.value)
+})
+
 // ==================== Page initialization ====================
 function updateInputs() {
   line1Input.value = canvasContent.line1
   line2Input.value = canvasContent.line2
   line3Input.value = canvasContent.line3
+  fontColorInput.value = canvasContent.fontColor
+  backgroundColorInput.value = canvasContent.backgroundColor
 }
 
 function init() {
   updateInputs()
-  line1Layer.writeText({ posX: 50, posY: 50, text: canvasContent.line1 })
-  line2Layer.writeText({ posX: 50, posY: 150, text: canvasContent.line2 })
-  line3Layer.writeText({ posX: 50, posY: 250, text: canvasContent.line3 })
+  line1Layer.writeText({ posX: 50, posY: 50, text: canvasContent.line1, color: canvasContent.fontColor })
+  line2Layer.writeText({ posX: 50, posY: 150, text: canvasContent.line2, color: canvasContent.fontColor })
+  line3Layer.writeText({ posX: 50, posY: 250, text: canvasContent.line3, color: canvasContent.fontColor })
+  backgroundLayer.updateBackgroud(canvasContent.backgroundColor)
 }
 
 window.onload = init()
