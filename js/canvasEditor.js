@@ -14,12 +14,17 @@ class CanvasEditor {
     this.canvasWidth = canvasWidth
     this.canvasHeight = canvasHeight
     this.zIndex = zIndex
+    this.canvasElement
     this.canvasCtx
 
     this.text = {}
 
     // Generate the canvas
     this.createCanvas(this.renderZoneId, this.canvasName, this.canvasWidth, this.canvasHeight, this.zIndex)
+  }
+
+  get canvasCtxUrl() {
+    return this.canvasElement.toDataURL('image/png')
   }
 
   /**
@@ -38,8 +43,8 @@ class CanvasEditor {
     renderZoneId.append(canvas)
     console.log(`Canvas ${canvasName} created!`)
 
-    let canvasElement = document.getElementById(canvasName)
-    this.canvasCtx = canvasElement.getContext('2d')
+    this.canvasElement = document.getElementById(canvasName)
+    this.canvasCtx = this.canvasElement.getContext('2d')
   }
 
   /**

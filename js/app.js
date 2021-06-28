@@ -19,15 +19,18 @@ const line3Input = document.getElementById('line3')
 const fontColorInput = document.getElementById('fontColor')
 const fontFamilyInput = document.getElementById('fontFamily')
 const backgroundColorInput = document.getElementById('backgroundColor')
+const generateExportButton = document.getElementById('generateExport')
 
 // ---------- Preview ----------
 const previewArea = document.getElementById('preview')
+const outputArea = document.getElementById('output')
 
 // ---------- Layers ----------
 const backgroundLayer = new CanvasEditor(previewArea, 'backgroundLayer', 1280, 500, 1000)
 const line1Layer = new CanvasEditor(previewArea, 'line1Layer', 1280, 500, 1001)
 const line2Layer = new CanvasEditor(previewArea, 'line2Layer', 1280, 500, 1002)
 const line3Layer = new CanvasEditor(previewArea, 'line3Layer', 1280, 500, 1003)
+const exportLayer = new CanvasEditor(outputArea, 'exportLayer', 1280, 500, 1000)
 
 // ==================== Input handlers ====================
 // ---------- Line 1 input ----------
@@ -85,9 +88,76 @@ fontFamilyInput.addEventListener('change', async () => {
 // ---------- Background color input ----------
 backgroundColorInput.addEventListener('change', (e) => {
   backgroundLayer.updateBackgroud(e.target.value)
-  console.log(e.target.value)
 })
 
+// ---------- Generate export button input ----------
+generateExportButton.addEventListener('click', (e) => {
+  createExport()
+})
+
+// ==================== Canvas export ====================
+function createExport() {
+  let canvas = document.createElement('canvas')
+  canvas.setAttribute('width', 1280)
+  canvas.setAttribute('height', 500)
+  canvas.setAttribute('class', 'max-w-full py-4')
+
+  // Create canvas element in HTML
+  outputArea.append(canvas)
+
+  // Export background
+  const backgroundImage = new Image()
+  backgroundImage.src = backgroundLayer.canvasCtxUrl
+  backgroundImage.onload = function () {
+    console.log(backgroundImage.src)
+    exportLayer.canvasCtx.drawImage(backgroundImage, 0, 0)
+  }
+
+  // Export line 1
+  const line1Image = new Image()
+  line1Image.src = line1Layer.canvasCtxUrl
+  line1Image.onload = function () {
+    console.log(line1Image.src)
+    exportLayer.canvasCtx.drawImage(line1Image, 0, 0)
+  }
+
+  // Export line 2
+  const line2Image = new Image()
+  line2Image.src = line2Layer.canvasCtxUrl
+  line2Image.onload = function () {
+    console.log(line2Image.src)
+    exportLayer.canvasCtx.drawImage(line2Image, 0, 0)
+  }
+
+  // Export line 3
+  const line3Image = new Image()
+  line3Image.src = line3Layer.canvasCtxUrl
+  line3Image.onload = function () {
+    console.log(line3Image.src)
+    exportLayer.canvasCtx.drawImage(line3Image, 0, 0)
+  }
+}
+
+function exportToImage() {
+  const exportLayerImg = new Image()
+  exportLayerImg.src = exportLayer.canvasCtx.toDataURL('image/png')
+
+  console.log(exportLayerImg.src)
+  // downloadExport('cover.png', exportLayerImg.src)
+}
+
+function downloadExport(filename, data) {
+  var element = document.createElement('a')
+  element.setAttribute('href', data)
+  element.setAttribute('download', filename)
+
+  element.style.display = 'none'
+  document.body.appendChild(element)
+
+  element.click()
+
+  document.body.removeChild(element)
+}
 // ==================== Page initialization ====================
 function updateInputs() {
   line1Input.value = canvasContent.line1
