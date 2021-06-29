@@ -93,6 +93,9 @@ backgroundColorInput.addEventListener('change', (e) => {
 // ---------- Generate export button input ----------
 generateExportButton.addEventListener('click', (e) => {
   createExport()
+  setTimeout(() => {
+    exportToImage()
+  }, 100)
 })
 
 // ==================== Canvas export ====================
@@ -109,7 +112,6 @@ function createExport() {
   const backgroundImage = new Image()
   backgroundImage.src = backgroundLayer.canvasCtxUrl
   backgroundImage.onload = function () {
-    console.log(backgroundImage.src)
     exportLayer.canvasCtx.drawImage(backgroundImage, 0, 0)
   }
 
@@ -117,7 +119,6 @@ function createExport() {
   const line1Image = new Image()
   line1Image.src = line1Layer.canvasCtxUrl
   line1Image.onload = function () {
-    console.log(line1Image.src)
     exportLayer.canvasCtx.drawImage(line1Image, 0, 0)
   }
 
@@ -125,7 +126,6 @@ function createExport() {
   const line2Image = new Image()
   line2Image.src = line2Layer.canvasCtxUrl
   line2Image.onload = function () {
-    console.log(line2Image.src)
     exportLayer.canvasCtx.drawImage(line2Image, 0, 0)
   }
 
@@ -133,17 +133,15 @@ function createExport() {
   const line3Image = new Image()
   line3Image.src = line3Layer.canvasCtxUrl
   line3Image.onload = function () {
-    console.log(line3Image.src)
     exportLayer.canvasCtx.drawImage(line3Image, 0, 0)
   }
 }
 
 function exportToImage() {
   const exportLayerImg = new Image()
-  exportLayerImg.src = exportLayer.canvasCtx.toDataURL('image/png')
+  exportLayerImg.src = exportLayer.canvasCtxUrl
 
-  console.log(exportLayerImg.src)
-  // downloadExport('cover.png', exportLayerImg.src)
+  downloadExport('gh-header.png', exportLayerImg.src)
 }
 
 function downloadExport(filename, data) {
