@@ -18,7 +18,9 @@
   },
   "scripts": {
     "dev": "npm run watch:css",
+    "build": "npm run build:css",
     "lint": "eslint --ext .js --ignore-path .gitignore .",
-    "watch:css": "postcss css/tailwind.css -o css/main.css --watch"
+    "watch:css": "postcss css/tailwind.css -o css/main.css --watch",
+    "build:css": "postcss css/tailwind.css -o css/main.css"
   }
 }
