@@ -17,6 +17,7 @@ const line1Input = document.getElementById('line1')
 const line2Input = document.getElementById('line2')
 const line3Input = document.getElementById('line3')
 const fontColorInput = document.getElementById('fontColor')
+const fontSizeInput = document.getElementById('fontSize')
 const fontFamilyInput = document.getElementById('fontFamily')
 const backgroundColorInput = document.getElementById('backgroundColor')
 const generateExportButton = document.getElementById('generateExport')
@@ -53,6 +54,16 @@ fontColorInput.addEventListener('change', (e) => {
   line1Layer.updateText({ color: e.target.value })
   line2Layer.updateText({ color: e.target.value })
   line3Layer.updateText({ color: e.target.value })
+})
+
+// ---------- Font size input ----------
+fontSizeInput.addEventListener('change', async () => {
+  const sizes = [32, 48, 52, 56, 64]
+  let fontSize = sizes[fontSizeInput.selectedIndex]
+
+  line1Layer.updateText({ size: fontSize })
+  line2Layer.updateText({ size: fontSize })
+  line3Layer.updateText({ size: fontSize })
 })
 
 // ---------- Font family input ----------

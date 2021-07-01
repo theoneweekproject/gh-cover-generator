@@ -6,8 +6,8 @@
 Website: https://gh-cover-generator.lucasalt.dev<br>
 Challenge: *WIP*<br>
 GitHub repo: https://github.com/theoneweekproject/gh-cover-generator<br>
-Current version: **[v0.0.9](https://github.com/theoneweekproject/gh-cover-generator/releases)**<br>
-Estimated working time: 9 hours
+Current version: **[v0.0.10](https://github.com/theoneweekproject/gh-cover-generator/releases)**<br>
+Estimated working time: 9 hours, 10 minutes
 
 ## Tasks:
 ✅ - Develop the UI<br>
