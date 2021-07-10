@@ -59,11 +59,10 @@ fontColorInput.addEventListener('change', (e) => {
 // ---------- Font size input ----------
 fontSizeInput.addEventListener('change', async () => {
   const sizes = [32, 48, 52, 56, 64]
-  let fontSize = sizes[fontSizeInput.selectedIndex]
 
-  line1Layer.updateText({ size: fontSize })
-  line2Layer.updateText({ size: fontSize })
-  line3Layer.updateText({ size: fontSize })
+  line1Layer.updateText({ size: sizes[fontSizeInput.selectedIndex] })
+  line2Layer.updateText({ size: sizes[fontSizeInput.selectedIndex] })
+  line3Layer.updateText({ size: sizes[fontSizeInput.selectedIndex] })
 })
 
 // ---------- Font family input ----------
@@ -178,9 +177,31 @@ function updateInputs() {
 
 function init() {
   updateInputs()
-  line1Layer.writeText({ posX: 50, posY: 50, text: canvasContent.line1, color: canvasContent.fontColor })
-  line2Layer.writeText({ posX: 50, posY: 150, text: canvasContent.line2, color: canvasContent.fontColor })
-  line3Layer.writeText({ posX: 50, posY: 250, text: canvasContent.line3, color: canvasContent.fontColor })
+  let canvasHeight = 500
+  let fontSize = 48
+  let spaceAround = (500 - 3 * fontSize - 2 * (100 - fontSize)) / 2
+  //
+  line1Layer.writeText({
+    posX: 50,
+    posY: spaceAround,
+    text: canvasContent.line1,
+    color: canvasContent.fontColor,
+    size: fontSize,
+  })
+  line2Layer.writeText({
+    posX: 50,
+    posY: spaceAround + 2 * 50,
+    text: canvasContent.line2,
+    color: canvasContent.fontColor,
+    size: fontSize,
+  })
+  line3Layer.writeText({
+    posX: 50,
+    posY: spaceAround + 4 * 50,
+    text: canvasContent.line3,
+    color: canvasContent.fontColor,
+    size: fontSize,
+  })
   backgroundLayer.updateBackgroud(canvasContent.backgroundColor)
 }
 
